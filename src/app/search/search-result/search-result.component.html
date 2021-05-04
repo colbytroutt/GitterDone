@@ -7,13 +7,17 @@
             <span class="real-name-value"><b>Name:</b> {{ realName ? realName : 'N/A' }}</span>
         </div>
         <div class="row">
-            <span class="username-value"><b>Username:</b> {{ username ? username : 'N/A'}}</span>&nbsp;<a *ngIf="username != null && username != ''" [href]="profileUrl"> (Go to Profile)</a>
+            <span class="username-value"><b>Username:</b> {{ username ? username : 'N/A'}}</span>
+            &nbsp;
+            <a *ngIf="username != null && username != ''" [href]="profileUrl" target="_blank"> (Go to Profile)</a>
         </div>
         <div class="row">
             <span class="email-value"><b>Email:</b> {{ email ? email : 'N/A' }}</span>
         </div>
         <div class="row">
-            <span class="public-repos-value"><b>Public Repos:</b> {{ publicRepos ? publicRepos : 'N/A' }}</span>&nbsp;<a *ngIf="username != null && username != ''" [href]="reposUrl"> (Go to Repositories)</a>
+            <span class="public-repos-value"><b>Public Repos:</b> {{ publicRepos ? publicRepos : 'N/A' }}</span>
+            &nbsp;
+            <a *ngIf="username != null && username != ''" [href]="reposUrl" target="_blank"> (Go to Repositories)</a>
         </div>
         <div class="row">
             <span class="location-value"><b>Location:</b> {{ location ? location : 'N/A' }}</span>

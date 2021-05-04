@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  searchUrl: 'http://api.github.com/search/users',
-  getUserUrl: 'http://api.github.com/users',
+  searchUrl: 'https://api.github.com/search/users',
+  getUserUrl: 'https://api.github.com/users',
   resultsPerPage: 10
 };

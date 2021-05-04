@@ -1,0 +1,28 @@
+<div class="row search-result-container">
+    <div class="col-xs-2 avatar-col">
+        <img [src]="avatarUrl" class="avatar-img">
+    </div>
+    <div class="col-xs-10">
+        <div class="row">
+            <span class="real-name-value"><b>Name:</b> {{ realName ? realName : 'N/A' }}</span>
+        </div>
+        <div class="row">
+            <span class="username-value"><b>Username:</b> {{ username ? username : 'N/A'}}</span>&nbsp;<a *ngIf="username != null && username != ''" [href]="profileUrl"> (Go to Profile)</a>
+        </div>
+        <div class="row">
+            <span class="email-value"><b>Email:</b> {{ email ? email : 'N/A' }}</span>
+        </div>
+        <div class="row">
+            <span class="public-repos-value"><b>Public Repos:</b> {{ publicRepos ? publicRepos : 'N/A' }}</span>&nbsp;<a *ngIf="username != null && username != ''" [href]="reposUrl"> (Go to Repositories)</a>
+        </div>
+        <div class="row">
+            <span class="location-value"><b>Location:</b> {{ location ? location : 'N/A' }}</span>
+        </div>
+        <div class="row">
+            <span class="account-created-value"><b>Account Created:</b> {{ accountCreated ? (accountCreated | date: "short") : ' N/A'  }}</span>
+        </div>
+        <div class="row">
+            <span class="last-updated-value"><b>Last Updated:</b> {{ lastUpdated ? (lastUpdated | date: "short") : 'N/A' }}</span>
+        </div>
+    </div>
+</div>

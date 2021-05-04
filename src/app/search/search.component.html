@@ -1,0 +1,33 @@
+<div class="search-bar-section">
+    <div class="row">
+        <div class="col-xs-12 search-label-col">
+            <span>Search for potential candidates by name or by email.</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 search-bar-col">
+            <input placeholder="e.g. John Smith, johnsmith@email.com, etc." [(ngModel)]="searchText" (input)="onInputChanged()" id="search-bar">        
+        </div>
+    </div>
+    <div *ngIf="showValidationMessage" class="row">
+        <div class="col-xs-12 validation-message-col">
+            <span class="validation-message-value">{{ validationMessage }}</span>
+        </div>
+    </div>
+</div>
+
+<div class="total-count-section">
+    <span class="total-count-value" *ngIf="displayTotalCount && totalCount > 0">Displaying {{ firstIndex }} - {{ lastIndex }} of {{ totalCount }}</span>
+    <span class="total-count-value" *ngIf="displayTotalCount && totalCount <= 0">No results found.</span>
+</div>
+
+<div class="page-nav-section">
+    <span class="page-nav-link" *ngIf="displayTotalCount && totalCount > 0 && firstIndex > 1" (click)="onPreviousPageClick()">- Previous Page</span>
+    &nbsp;&nbsp;
+    <span class="page-nav-link" *ngIf="displayTotalCount && totalCount > 0 && lastIndex < totalCount" (click)="onNextPageClick()">Next Page +</span>
+</div>
+
+<div class="search-results-section" *ngIf="searchResult?.items != null">
+    <app-search-result *ngFor="let result of searchResult.items" [user]="result"></app-search-result>
+</div>
+

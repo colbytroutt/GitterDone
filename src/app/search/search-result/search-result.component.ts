@@ -1,7 +1,6 @@
 import { environment } from '../../../environments/environment'
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { take } from 'rxjs/operators'
 import { User } from 'src/app/models/user.model';
 
@@ -21,6 +20,8 @@ export class SearchResultComponent implements OnInit, OnDestroy {
   get searchResultUser() {
     return this._searchResultUser;
   }
+
+  @Output('error') errorEvent: EventEmitter<void> = new EventEmitter<void>();
 
   avatarUrl: string;
   username: string;
@@ -55,6 +56,8 @@ export class SearchResultComponent implements OnInit, OnDestroy {
       this.realName = result.name;
       this.profileUrl = result.html_url;
       this.reposUrl = result.html_url + '?tab=repositories';
+    }, (error) => {
+      this.errorEvent.emit();
     });
   }
 }

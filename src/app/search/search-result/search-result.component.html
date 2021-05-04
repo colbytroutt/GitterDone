@@ -1,15 +1,15 @@
 <div class="row search-result-container">
     <div class="col-xs-2 avatar-col">
-        <img [src]="avatarUrl" class="avatar-img">
+        <img [src]="avatarUrl ? avatarUrl : searchResultUser.avatar_url" class="avatar-img">
     </div>
     <div class="col-xs-10">
         <div class="row">
-            <span class="real-name-value"><b>Name:</b> {{ realName ? realName : 'N/A' }}</span>
+            <span class="username-value"><b>Username:</b> {{ username ? username : searchResultUser.login }}</span>
+            &nbsp;
+            <a [href]="profileUrl ? profileUrl : searchResultUser.html_url" target="_blank"> (Go to Profile)</a>
         </div>
         <div class="row">
-            <span class="username-value"><b>Username:</b> {{ username ? username : 'N/A'}}</span>
-            &nbsp;
-            <a *ngIf="username != null && username != ''" [href]="profileUrl" target="_blank"> (Go to Profile)</a>
+            <span class="real-name-value"><b>Name:</b> {{ realName ? realName : 'N/A' }}</span>
         </div>
         <div class="row">
             <span class="email-value"><b>Email:</b> {{ email ? email : 'N/A' }}</span>
@@ -17,7 +17,7 @@
         <div class="row">
             <span class="public-repos-value"><b>Public Repos:</b> {{ publicRepos ? publicRepos : 'N/A' }}</span>
             &nbsp;
-            <a *ngIf="username != null && username != ''" [href]="reposUrl" target="_blank"> (Go to Repositories)</a>
+            <a [href]="reposUrl ? reposUrl : searchResultUser.html_url + '?tab=repositories'" target="_blank"> (Go to Repositories)</a>
         </div>
         <div class="row">
             <span class="location-value"><b>Location:</b> {{ location ? location : 'N/A' }}</span>

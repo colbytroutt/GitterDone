@@ -14,6 +14,11 @@
             <span class="validation-message-value">{{ validationMessage }}</span>
         </div>
     </div>
+    <div *ngIf="showChildValidationMessage" class="row">
+        <div class="col-xs-12 child-validation-col">
+            <span class="child-validation-value">One or more search results may be missing information. This is most likely caused by a technical limitation on the API that retrieves user information. It should resolve itself if you wait a few minutes before trying another search.</span>
+        </div>
+    </div>
 </div>
 
 <div class="total-count-section">
@@ -28,6 +33,6 @@
 </div>
 
 <div class="search-results-section" *ngIf="searchResult?.items != null">
-    <app-search-result *ngFor="let result of searchResult.items" [user]="result"></app-search-result>
+    <app-search-result *ngFor="let result of searchResult.items" [user]="result" (error)="onChildError()"></app-search-result>
 </div>
 

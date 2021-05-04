@@ -60,3 +60,13 @@ input {
     padding-right: 10%;
     word-wrap: break-word;
 }
+
+.child-validation-value {
+    color: red;
+}
+
+.child-validation-col {
+    padding-left: 10%;
+    padding-right: 10%;
+    word-wrap: break-word;
+}

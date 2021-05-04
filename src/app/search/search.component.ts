@@ -32,6 +32,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   showValidationMessage: boolean = false;
   validationMessage: string = null;
+  showChildValidationMessage: boolean = false;
 
   constructor(private http: HttpClient) { }
 
@@ -65,6 +66,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       this.lastSearchedText = text;
       this.http.get(environment.searchUrl, {params: {q: '"' + text + '" in:name type:user in:email', per_page: environment.resultsPerPage.toString(), page: this.searchPage.toString()}}).subscribe((results: any) => {
         this.showValidationMessage = false;
+        this.showChildValidationMessage = false;
         this.validationMessage = null;
         this.displayTotalCount = true;
         this.lastSearchedText = this.searchText;
@@ -84,14 +86,20 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   onNextPageClick() {
+    if (this.showValidationMessage) return;
     this.searchPage++;
     this.lastSearchedText = '';
     this.searchUsers(this.searchText);
   }
 
   onPreviousPageClick() {
+    if (this.showValidationMessage) return;
     this.searchPage--;
     this.lastSearchedText = '';
     this.searchUsers(this.searchText);
+  }
+
+  onChildError() {
+    this.showChildValidationMessage = true;
   }
 }
